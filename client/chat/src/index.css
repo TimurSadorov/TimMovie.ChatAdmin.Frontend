@@ -1,0 +1,64 @@
+body {
+    background-color: #100e19;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.search-film {
+    margin-top: 3%;
+}
+
+.search-film__input {
+    min-width: 320px;
+    max-width: 30%;
+}
+
+.filter {
+    margin-top: 2%;
+}
+
+.additional-filters {
+    border-radius: 10px;
+    background-color: #1f1b2e;
+    margin-top: 3%;
+}
+
+.additional-filters__container {
+    padding: 10px;
+    padding-bottom: 0;
+    display: grid;
+    grid-column-gap: 3%;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.filter-item {
+    margin-bottom: 10px;
+}
+
+.more-filters__menu-container_one-value {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    background-color: #23212b;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.2rem;
+    border-radius: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.buttons:hover {
+    background-color: #36353e;
+}
+
+.zindex-2 {
+    position: relative;
+    z-index: 2;
+}

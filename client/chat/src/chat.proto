@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+import 'google/protobuf/empty.proto';
+
+enum ChatEventStatus {
+    Simple = 0;
+    UserConnectToChat = 1;
+    UserDisconnectFromChat = 2;
+}
+
+message ChatEvent {
+  string body = 1;
+  ChatEventStatus status = 2;
+}
+
+message AttachedClient {
+  string name = 1;
+}
+
+message ChatMessage {
+  string name = 1;
+  string body = 2;
+}
+
+service Chat {
+  rpc ConnectUserToChat(AttachedClient) returns (stream ChatMessage);
+  rpc ConnectSupportToChat(AttachedClient) returns (stream ChatMessage);
+  rpc ConnectToEvents(AttachedClient) returns (stream ChatEvent);
+  rpc SendMessage(ChatMessage) returns (google.protobuf.Empty);
+  rpc DisconnectUserFromChat(AttachedClient) returns (google.protobuf.Empty);
+  rpc DisconnectSupportFromChat(AttachedClient) returns (google.protobuf.Empty);
+}

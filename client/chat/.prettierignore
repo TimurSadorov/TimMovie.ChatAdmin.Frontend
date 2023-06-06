@@ -1,0 +1,5 @@
+*.js
+locale
+empty.ts
+chat.client.ts
+chat.ts
