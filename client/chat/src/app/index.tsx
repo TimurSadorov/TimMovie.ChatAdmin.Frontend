@@ -13,10 +13,7 @@ const App = () => {
 
     const [client, setClient] = useState<ChatClient | null>(null)
 
-    const [chatItems, setChatItems] = useState<(ChatMessage | ChatEvent)[]>([
-        { body: 'sdadsa', name: 'asda' },
-        { body: 'asdasdas', name: 'timur' },
-    ])
+    const [chatItems, setChatItems] = useState<(ChatMessage | ChatEvent)[]>([])
     const [connectedToChat, setConnectedToChat] = useState(false)
     const [hasUser, setHasUser] = useState(false)
 
@@ -34,7 +31,7 @@ const App = () => {
         const stream = client.connectSupportToChat({ name: name! })
 
         console.log('стрим запустился')
-        setConnectedToChat(true)
+        setTimeout(() => setConnectedToChat(true), 1000)
 
         let isFirstMessage = true
         for await (const message of stream.responses) {
@@ -57,6 +54,7 @@ const App = () => {
             } else {
                 if (event.status === ChatEventStatus.UserConnectToChat) {
                     setChatItems([])
+                    setHasUser(true)
                 }
                 if (event.status === ChatEventStatus.UserDisconnectFromChat) {
                     setHasUser(false)
@@ -91,7 +89,7 @@ const App = () => {
         await client.disconnectSupportFromChat({ name: name! })
     }
 
-    if (!name) {
+    if (!name || !name.startsWith('admin')) {
         return <div>Ошибка!</div>
     }
 
